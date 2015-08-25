@@ -78,11 +78,11 @@ fn test_trait_variant() {
 
 #[bench]
 fn bench_enum_variant(bench: &mut test::Bencher) {
-	let n = 1024;
+    let n = 1024;
     let r = 32;
 
-	let val_rng: Range<f64> = Range::new(-10.0, 10.0);
-	let mut rng = rand::thread_rng();
+    let val_rng: Range<f64> = Range::new(-10.0, 10.0);
+    let mut rng = rand::thread_rng();
 
     let mut objects = Vec::with_capacity(n*3);
     let mut values = Vec::with_capacity(n*6);
@@ -99,21 +99,21 @@ fn bench_enum_variant(bench: &mut test::Bencher) {
 
     bench.iter(|| {
         let mut x = 0.0;
-    	for _ in 0..r {
+        for _ in 0..r {
             for i in 0..objects.len() {
                 x += objects[i].apply(values[i*2], values[i*2+1]);
             }
-		}
-	});
+        }
+    });
 }
 
 #[bench]
 fn bench_trait_variant(bench: &mut test::Bencher) {
-	let n = 1024;
+    let n = 1024;
     let r = 32;
 
-	let val_rng: Range<f64> = Range::new(-10.0, 10.0);
-	let mut rng = rand::thread_rng();
+    let val_rng: Range<f64> = Range::new(-10.0, 10.0);
+    let mut rng = rand::thread_rng();
 
     let mut zeros = Vec::with_capacity(n);
     let mut dots = Vec::with_capacity(n);
@@ -140,10 +140,10 @@ fn bench_trait_variant(bench: &mut test::Bencher) {
 
     bench.iter(|| {
         let mut x = 0.0;
-    	for _ in 0..r {
+        for _ in 0..r {
             for i in 0..objects.len() {
                 x += objects[i].apply(values[i*2], values[i*2+1]);
             }
-		}
-	});
+        }
+    });
 }
